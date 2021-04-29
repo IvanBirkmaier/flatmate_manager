@@ -12,3 +12,10 @@ public class Controller {
     }
 
 }
+
+    @RequestMapping("/nico")
+    public String index() {
+        return "Der dumme Nico ist nicht nett, steht sogar im Inernet! HAHAHA";
+    }
+
+}
