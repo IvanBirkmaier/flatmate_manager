@@ -13,3 +13,9 @@ public class Controller {
 
 }
 
+    @RequestMapping("/ivan")
+    public String index1() {
+        return "PIMP";
+    }
+
+}
