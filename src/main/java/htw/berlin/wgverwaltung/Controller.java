@@ -14,7 +14,7 @@ public class Controller {
 }
 
     @RequestMapping("/nico")
-    public String index() {
+    public String index1() {
         return "Der dumme Nico ist nicht nett, steht sogar im Inernet! HAHAHA";
     }
 
