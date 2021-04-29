@@ -8,14 +8,8 @@ public class Controller {
 
     @RequestMapping("/helloWorld")
     public String index() {
-        return "Moin Moin!";
-    }
-
-}
-
-    @RequestMapping("/nico")
-    public String index1() {
         return "Der dumme Nico ist nicht nett, steht sogar im Inernet! HAHAHA";
     }
 
 }
+
