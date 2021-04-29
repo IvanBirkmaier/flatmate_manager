@@ -6,7 +6,7 @@ plugins {
 
 group = 'htw.berlin'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '16'
+sourceCompatibility = '16.0.1'
 
 repositories {
 	mavenCentral()
