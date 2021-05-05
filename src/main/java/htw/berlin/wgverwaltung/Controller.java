@@ -11,7 +11,7 @@ public class Controller {
         return "Hallo";
     }
 
-}
+
 
     @RequestMapping("/ivan")
     public String index1() {
