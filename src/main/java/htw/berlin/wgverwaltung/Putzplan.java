@@ -6,16 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Putzplaene {
+public class Putzplan {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    public Putzplaene() {
+    public Putzplan() {
     }
 
-    public Putzplaene(String name) {
+    public Putzplan(String name) {
         this.name = name;
     }
 
