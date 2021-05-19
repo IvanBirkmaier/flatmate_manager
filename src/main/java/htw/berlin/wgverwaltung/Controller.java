@@ -31,7 +31,12 @@ public String putzplanForm(Model model){
         model.addAttribute("einkaufsliste", einkaufsliste);
         return "einkaufsliste result";
     }
-
+@PostMapping("/kauf")
+    public String einkaufslisteErstellen(@ModelAttribute Einkaufsliste einkaufsliste, Model model){
+    service.saveEinkaufsliste(einkaufsliste);
+    model.addAttribute("einkaufsliste", einkaufsliste);
+    return "einkaufsliste";
+}
 
 
 }
