@@ -9,12 +9,12 @@ import java.util.List;
 public class Service {
 
     @Autowired
-    private PutzplaeneRepository putzplaeneRepository;
+    private PutzplanRepository putzplanRepository;
     @Autowired
     private EinkaufslisteRepository einkaufslisteRepository;
 
     public List<Putzplan> findeAllePutzplaene(){
-        var iterator = putzplaeneRepository.findAll();
+        var iterator = putzplanRepository.findAll();
         var putzplaene = new ArrayList<Putzplan>();
         iterator.forEach(putzplaene::add);
         return putzplaene;
@@ -32,18 +32,18 @@ public class Service {
     }
 
     public Long countAllPutzplaene(){
-        return putzplaeneRepository.count();
+        return putzplanRepository.count();
     }
 
     public void deleteByIdPutzplane(Long putzplanId){
-        putzplaeneRepository.deleteById(putzplanId);
+        putzplanRepository.deleteById(putzplanId);
     }
     public void deleteByIdEinkaufsliste(Long einkaufslisteId){
-        putzplaeneRepository.deleteById(einkaufslisteId);
+        putzplanRepository.deleteById(einkaufslisteId);
     }
 
     public void savePutzplan(Putzplan putzplan){
-        putzplaeneRepository.save(putzplan);
+        putzplanRepository.save(putzplan);
     }
     public void saveEinkaufsliste(Einkaufsliste einkaufsliste){
         einkaufslisteRepository.save(einkaufsliste);
