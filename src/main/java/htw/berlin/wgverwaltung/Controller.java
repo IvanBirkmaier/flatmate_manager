@@ -39,7 +39,7 @@ public String putzplanForm(Model model){
     return "einkaufslisteerstellen";
 }
 
-@GetMapping("/JO")
+@GetMapping("/jo")
     public String jojotest(){
     return "JO";
 }
