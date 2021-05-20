@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class Controller {
 
+
 private Service service = new Service();
 
 @GetMapping("/createputzplan")
@@ -31,9 +32,17 @@ public String putzplanForm(Model model){
         model.addAttribute("einkaufsliste", einkaufsliste);
         return "einkaufsliste result";
     }
+@PostMapping("/kauf")
+    public String einkaufslisteErstellen(@ModelAttribute Einkaufsliste einkaufsliste, Model model){
+    service.saveEinkaufsliste(einkaufsliste);
+    model.addAttribute("einkaufsliste", einkaufsliste);
+    return "einkaufsliste";
+}
 
-
-
+@GetMapping("/JO")
+    public String jojotest(){
+    return "JO";
+}
 }
 
 
