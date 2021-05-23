@@ -36,10 +36,10 @@ public String putzplanForm(Model model){
     public String einkaufslisteErstellen(@ModelAttribute Einkaufsliste einkaufsliste, Model model){
     service.saveEinkaufsliste(einkaufsliste);
     model.addAttribute("einkaufsliste", einkaufsliste);
-    return "einkaufsliste";
+    return "einkaufslisteerstellen";
 }
 
-@GetMapping("/JO")
+@GetMapping("/jo")
     public String jojotest(){
     return "JO";
 }
