@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
-
+@org.springframework.stereotype.Service
 public class Service {
 
     @Autowired
