@@ -4,11 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
+
 @org.springframework.stereotype.Controller
 public class Controller {
 
 @Autowired
 private Service service = new Service();
+
+
+@GetMapping("/home")
+public String mainbord(){
+    return "mainbord";
+}
 
 @GetMapping("/create")
 public String einkaufslisteInput(Model model){
@@ -17,11 +25,19 @@ public String einkaufslisteInput(Model model){
 }
 
    @PostMapping("/createeinkaufslisten")
-    public String einkaufslisteSubmit(@ModelAttribute Einkaufsliste einkaufsliste, Model model){
+    public void einkaufslisteSubmit(@ModelAttribute Einkaufsliste einkaufsliste, Model model){
         service.saveEinkaufsliste(einkaufsliste);
         model.addAttribute("einkaufsliste", einkaufsliste);
-        return "einkaufsliste";
     }
+
+
+    public String showProducts(@ModelAttribute Einkaufsliste einkaufsliste, Model model){
+    List products = einkaufsliste.getProducts();
+    model.addAttribute("einkaufsliste", einkaufsliste);
+
+    return "JO";
+    }
+
 
 }
 

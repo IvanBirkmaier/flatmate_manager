@@ -5,21 +5,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.awt.*;
 
 @Entity
 public class Einkaufsliste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String productname;
+    private String name;
+    private List products;
     private Boolean completed;
 
     protected Einkaufsliste() {
     }
 
-    public Einkaufsliste(String productname) {
-        this.productname = productname;
+    public Einkaufsliste(String name) {
+        this.name = name;
         this.completed = false;
+    }
+
+    public void setProducts(String productname){
+        products.add(productname);
+    }
+
+    public List getProducts() {
+        return products;
     }
 
     public long getId() {
@@ -31,12 +41,12 @@ public class Einkaufsliste {
         this.id = id;
     }
 
-    public String getProductname() {
-        return productname;
+    public String getName() {
+        return name;
     }
 
-    public void setProductname(String productname) {
-        this.productname = productname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Boolean getCompleted() {
@@ -46,4 +56,6 @@ public class Einkaufsliste {
     public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
+
+
 }

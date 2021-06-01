@@ -7,9 +7,35 @@
 <body>
 <h1>Einkaufsliste schreiben</h1>
 <!--/*@thymesVar id="einkaufsliste" type="htw.berlin.wgverwaltung.Einkaufsliste"*/-->
-<form action ="#" th:action="@{/createeinkaufslisten}" th:object="${einkaufsliste}" method="post">
-  <p>Name:<input type="text" th:field="*{productname}"/></p>
-  <p><input type="submit" value="submit"/></p>
+<p id="demo"></p>
+
+<script type="text/javascript">
+    var x = document.getElementById("myBtn");
+    var b = document.getElementById("myBtm");
+    var List = require("collections/list");
+
+    function hinzufuegen() {
+        var z = document.getElementById("myForm").action;
+        var u = document.getElementById("p").value;
+        List.add(u);
+    }
+
+     document.getElementById("demo").innerHTML = List;
+
+    function erstellen() {
+    }
+</script>
+
+
+
+
+
+<form action ="#" id = "myForm" th:action="@{/createeinkaufslisten}" th:object="${einkaufsliste}" method="post">
+    <p>Einkaufsliste:<input type="text" id = "p"  value="" th:field="*{name}"/></p><br/>
 </form>
+<button type="button" id="myBtm" onclick="hinzufuegen()">Hinzufügen</button><br/><br/>
+<button type="button" id="myBtn" onclick="erstellen()">Einkaufliste erstellen</button>
+
+
 </body>
 </html>
