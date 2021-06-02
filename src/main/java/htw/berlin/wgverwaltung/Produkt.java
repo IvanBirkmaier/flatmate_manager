@@ -1,7 +1,6 @@
 package htw.berlin.wgverwaltung;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 @Table(name="PRODUCT")
@@ -11,13 +10,13 @@ public class Produkt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PRODUCT_ID", nullable = false)
     private Long productId;
-    @Column(nullable = false)
+    @Column(name="PRODUCTNAME", nullable = false)
     private String productname;
     @Column(name="COMPLETED")
     private Boolean completed;
 
     protected Produkt(){
-
+    this.completed = false;
     }
 
     public Long getProductId() { return productId; }
