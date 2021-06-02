@@ -10,8 +10,9 @@ public class Service {
 
     @Autowired
     private PutzplanRepository putzplanRepository;
+
     @Autowired
-    private EinkaufslisteRepository einkaufslisteRepository;
+    private ProduktRepository produktRepository;
 
     public List<Putzplan> findeAllePutzplaene(){
         var iterator = putzplanRepository.findAll();
@@ -20,16 +21,14 @@ public class Service {
         return putzplaene;
     }
 
-    public List<Einkaufsliste> findeAlleEinkaufslisten(){
-        var iterator = einkaufslisteRepository.findAll();
-        var einkaufslisten = new ArrayList<Einkaufsliste>();
-        iterator.forEach(einkaufslisten::add);
-        return einkaufslisten;
+    public List<Produkt> findeAlleProdukte(){
+        var iterator = produktRepository.findAll();
+        var produkte = new ArrayList<Produkt>();
+        iterator.forEach(produkte::add);
+        return produkte;
     }
 
-    public Long countAllEinkaufslisten(){
-       return einkaufslisteRepository.count();
-    }
+
 
     public Long countAllPutzplaene(){
         return putzplanRepository.count();
@@ -38,15 +37,11 @@ public class Service {
     public void deleteByIdPutzplane(Long putzplanId){
         putzplanRepository.deleteById(putzplanId);
     }
-    public void deleteByIdEinkaufsliste(Long einkaufslisteId){
-        putzplanRepository.deleteById(einkaufslisteId);
-    }
+
 
     public void savePutzplan(Putzplan putzplan){
         putzplanRepository.save(putzplan);
     }
-    public void saveEinkaufsliste(Einkaufsliste einkaufsliste){
-        einkaufslisteRepository.save(einkaufsliste);
-    }
+
 
 }
