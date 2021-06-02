@@ -10,18 +10,6 @@ public class Controller {
 @Autowired
 private Service service = new Service();
 
-@GetMapping("/create")
-public String einkaufslisteInput(Model model){
-    model.addAttribute("einkaufsliste", new Einkaufsliste());
-    return "einkaufslisteerstellen";
-}
-
-   @PostMapping("/createeinkaufslisten")
-    public String einkaufslisteSubmit(@ModelAttribute Einkaufsliste einkaufsliste, Model model){
-        service.saveEinkaufsliste(einkaufsliste);
-        model.addAttribute("einkaufsliste", einkaufsliste);
-        return "einkaufsliste";
-    }
 
 }
 

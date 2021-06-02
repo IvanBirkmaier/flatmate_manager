@@ -1,35 +1,28 @@
 package htw.berlin.wgverwaltung;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
-public class Einkaufsliste {
+@Table(name="PRODUCT")
+public class Produkt {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name="PRODUCT_ID", nullable = false)
+    private Long productId;
+    @Column(nullable = false)
     private String productname;
+    @Column(name="COMPLETED")
     private Boolean completed;
 
-    protected Einkaufsliste() {
+    protected Produkt(){
+
     }
 
-    public Einkaufsliste(String productname) {
-        this.productname = productname;
-        this.completed = false;
-    }
+    public Long getProductId() { return productId; }
 
-    public long getId() {
-        return id;
-    }
-
-    //Notwendig trotz Generierung?
-    public void setId(long id) {
-        this.id = id;
-    }
+    public void setProductId(Long productId) { this.productId = productId; }
 
     public String getProductname() {
         return productname;
@@ -46,4 +39,6 @@ public class Einkaufsliste {
     public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
+
 }
+
