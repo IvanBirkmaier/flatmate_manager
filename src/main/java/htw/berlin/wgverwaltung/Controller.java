@@ -6,9 +6,14 @@ import org.springframework.web.bind.annotation.*;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-
 @Autowired
 private Service service = new Service();
+
+@GetMapping("/home")
+    public String startseite(Model model){
+    return "startseite";
+}
+
 
 
 }
