@@ -63,5 +63,7 @@ public class Service {
         putzplanRepository.save(putzplan);
     }
 
+    public void saveProdukt(Produkt produkt){produktRepository.save(produkt);}
+
 
 }
