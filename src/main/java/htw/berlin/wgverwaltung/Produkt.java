@@ -13,11 +13,8 @@ public class Produkt {
     @Column(name="PRODUCTNAME", nullable = false)
     private String productname;
     @Column(name="COMPLETED")
-    private Boolean completed;
+    private Boolean completed = false;
 
-    protected Produkt(){
-    this.completed = false;
-    }
 
     public Long getProductId() { return productId; }
 
