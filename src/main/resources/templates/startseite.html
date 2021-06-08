@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-  <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
-
-  <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{css/stylesheet.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
   <title>Startseite</title>
-  <script type="text/javascript" src="dyn.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -18,5 +16,10 @@
         <a href="#"><i class="fa fa-user-circle"></i>   Login</a>
     </div>
 
+    <div id = "test"></div>
+</div>
 </body>
+<footer>
+    <script type="text/javascript" th:src="@{js/test.js}"></script>
+</footer>
 </html>
