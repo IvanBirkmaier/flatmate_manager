@@ -1,4 +1,4 @@
-package htw.berlin.wgverwaltung;
+package htw.berlin.wgverwaltung.persistence;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Putzplan {
+public class PutzplanEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,10 +15,10 @@ public class Putzplan {
     private int effortPoints;
     private Boolean completed;
 
-    protected Putzplan() {
+    protected PutzplanEntity() {
     }
 
-    public Putzplan(String taskname, int timeInterval, int effortPoints) {
+    public PutzplanEntity(String taskname, int timeInterval, int effortPoints) {
         this.taskname = taskname;
         this.timeInterval = timeInterval;
         this.effortPoints = effortPoints;

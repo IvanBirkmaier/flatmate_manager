@@ -8,8 +8,8 @@
 <div class="wrapper">
     <div class ="create">
         <h2 class = "h2">Rauf auf die Liste!</h2>
-        <!--/*@thymesVar id="produkt" type="htw.berlin.wgverwaltung.Produkt"*/-->
-        <form action="#"  th:action="@{/saveProdukt}" th:object="${produkt}" method="post">
+        <!--/*@thymesVar id="produktEntity" type="htw.berlin.wgverwaltung.persistence.ProduktEntity"*/-->
+        <form action="#"  th:action="@{/saveProdukt}" th:object="${produktEntity}" method="post">
             <p>Artikel: <input type="text" th:field="*{productname}"></p>
             <input type="submit" value="submit"/>
         </form>

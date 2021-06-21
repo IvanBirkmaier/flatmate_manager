@@ -1,20 +1,24 @@
-package htw.berlin.wgverwaltung;
+package htw.berlin.wgverwaltung.persistence;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="PRODUCT")
-public class Produkt {
+@Table(name="product")
+public class ProduktEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="PRODUCT_ID", nullable = false)
+    @Column(name="product_id", nullable = false)
     private Long productId;
-    @Column(name="PRODUCTNAME", nullable = false)
+    @Column(name="productname", nullable = false)
     private String productname;
-    @Column(name="COMPLETED")
+    @Column(name="completed", nullable = false)
     private Boolean completed = false;
 
+    public ProduktEntity(String productname){
+        this.productname = productname;
+    }
+    public ProduktEntity(){}
 
     public Long getProductId() { return productId; }
 

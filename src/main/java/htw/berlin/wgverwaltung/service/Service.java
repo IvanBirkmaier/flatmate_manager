@@ -1,8 +1,11 @@
-package htw.berlin.wgverwaltung;
+package htw.berlin.wgverwaltung.service;
 
+import htw.berlin.wgverwaltung.persistence.ProduktEntity;
+import htw.berlin.wgverwaltung.persistence.ProduktRepository;
+import htw.berlin.wgverwaltung.persistence.PutzplanEntity;
+import htw.berlin.wgverwaltung.persistence.PutzplanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 @org.springframework.stereotype.Service
@@ -16,18 +19,18 @@ public class Service {
 
 
 //Produkt Funktionen
-    public List<Produkt> findeAlleProdukte(){
+    public List<ProduktEntity> findeAlleProdukte(){
         var iterator = produktRepository.findAll();
-        var produkte = new ArrayList<Produkt>();
+        var produkte = new ArrayList<ProduktEntity>();
         iterator.forEach(produkte::add);
         return produkte;
     }
-    public List<Produkt> findeAlleOffenenProdukte(){
+    public List<ProduktEntity> findeAlleOffenenProdukte(){
         var iterator = produktRepository.findAll();
-        var produkte = new ArrayList<Produkt>();
+        var produkte = new ArrayList<ProduktEntity>();
         iterator.forEach(produkte::add);
 
-        for(Produkt p : produkte){
+        for(ProduktEntity p : produkte){
             if(p.getCompleted()){
                 produkte.remove(p);
             }
@@ -38,14 +41,14 @@ public class Service {
     public void deleteProductById(Long productId){
         produktRepository.deleteById(productId);
     }
-    public void deleteProduct(Produkt p){
+    public void deleteProduct(ProduktEntity p){
         produktRepository.delete(p);
     }
 
 //Putzplan Funktionen
-    public List<Putzplan> findeAllePutzplaene(){
+    public List<PutzplanEntity> findeAllePutzplaene(){
         var iterator = putzplanRepository.findAll();
-        var putzplaene = new ArrayList<Putzplan>();
+        var putzplaene = new ArrayList<PutzplanEntity>();
         iterator.forEach(putzplaene::add);
         return putzplaene;
     }
@@ -59,11 +62,11 @@ public class Service {
     }
 
 
-    public void savePutzplan(Putzplan putzplan){
-        putzplanRepository.save(putzplan);
+    public void savePutzplan(PutzplanEntity putzplanEntity){
+        putzplanRepository.save(putzplanEntity);
     }
 
-    public void saveProdukt(Produkt produkt){produktRepository.save(produkt);}
+    public void saveProdukt(ProduktEntity produktEntity){produktRepository.save(produktEntity);}
 
 
 }
