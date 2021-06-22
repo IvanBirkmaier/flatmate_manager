@@ -4,6 +4,11 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/stylesheet.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
+    <script src="http://unpkg.com/vue@next" defer></script>
+    <script src="http://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://unpk.com/@babel/standalone/babel.min.js"></script>
+    <script src="#" th:src="@{/js/vue-test.js}" defer></script>
+    <script type="text/javascript" th:src="@{js/test.js}" defer></script>
   <title>Startseite</title>
 </head>
 <body>
@@ -14,12 +19,13 @@
         <a href="/createProdukt"><i class="fa fa-shopping-cart"></i> Einkaufsliste</a>
         <a href="#"><i class="fa fa-tasks"> Putzplan</i></a>
         <a href="#"><i class="fa fa-user-circle"></i>   Login</a>
+        <p th:if="${firstName} + ${lastName}" th:text="'User: ' + ${firstName} +' '+ ${lastName}"></p>
     </div>
-
-    <div id = "test"></div>
+    <br/>
+    <br/>
+    <div id="input-einkaufsliste">
+     <input-einkaufsliste></input-einkaufsliste>
+    </div>
 </div>
 </body>
-<footer>
-    <script type="text/javascript" th:src="@{js/test.js}"></script>
-</footer>
 </html>

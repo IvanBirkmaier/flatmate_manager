@@ -17,32 +17,34 @@ public class Controller {
 @Autowired
 private Service service = new Service();
 
-    @GetMapping("/home")
-    public String getCurrentUser(@AuthenticationPrincipal OidcUser user, Model model) {
-        String email = user.getEmail();
 
-        model.addAttribute("email", email);
-        model.addAttribute("firstName", user.getGivenName());
-        model.addAttribute("lastName", user.getFamilyName());
-
-        return "home";
-    }
 
 @GetMapping("/startseite")
-    public String startseite(Model model){
-    List<ProduktEntity> products = service.findeAlleOffenenProdukte();
-    model.addAttribute("products", products);
+    public String startseite(@AuthenticationPrincipal OidcUser user, Model model){
+    String email = user.getEmail();
+    model.addAttribute("email", email);
+    model.addAttribute("firstName", user.getGivenName());
+    model.addAttribute("lastName", user.getFamilyName());
+    model.addAttribute("produkt", new ProduktEntity());
     return "startseite";
 }
 
 @GetMapping("/createProdukt")
-    public String createProdukt( Model model){
-    model.addAttribute("produkt", new ProduktEntity());
+    public String createProdukt( @AuthenticationPrincipal OidcUser user, Model model){
     return "produkterstellen";
 }
 
+@GetMapping("/products")
+public List products(@AuthenticationPrincipal OidcUser user, Model model){
+    List<ProduktEntity> products = service.findeAlleOffenenProdukte();
+    model.addAttribute("products", products);
+    return products;
+}
+
+
+
 @PostMapping("/saveProdukt")
-    public String saveProdukt(@ModelAttribute ProduktEntity produktEntity, Model model){
+    public String saveProdukt(@AuthenticationPrincipal OidcUser user,@ModelAttribute ProduktEntity produktEntity, Model model){
     service.saveProdukt(produktEntity);
     model.addAttribute("produkt", produktEntity);
     return "startseite";
