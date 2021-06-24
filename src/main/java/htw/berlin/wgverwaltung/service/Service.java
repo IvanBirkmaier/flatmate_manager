@@ -34,7 +34,9 @@ public class Service {
         }
     }
 
-
+    public void deleteProductById(Long productId){
+        produktRepository.deleteById(productId);
+    }
 
 
 
@@ -63,9 +65,7 @@ public class Service {
         return produkte;
     }
 
-    public void deleteProductById(Long productId){
-        produktRepository.deleteById(productId);
-    }
+
     public void deleteProduct(ProduktEntity p){
         produktRepository.delete(p);
     }

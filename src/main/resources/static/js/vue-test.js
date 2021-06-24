@@ -20,8 +20,8 @@ app.component('input-einkaufsliste', {
 <tr v-if="item.lengh === 0">
 <td colspan="2">Keine Artikel</td>
 </tr>
-<tr v-for="ProduktEntity in item">
-<td>{{ProduktEntity.productname}}</td>
+<tr  v-for="ProduktEntity in item">
+<td ><button type="button" @click="deleteOneProduct('65')">Entfernen</button>{{ProduktEntity.productname}}</td>
 </tr>
 <tr>
 <td>{{nameField}}</td>
@@ -47,6 +47,10 @@ app.component('input-einkaufsliste', {
         },
         deleteProducts(){
           axios.post('/alleartikellöschen').then(response => (this.loadProducts()))
+        },
+
+        deleteOneProduct(id){
+            axios.delete('/artikelloeschen/{id}').then(response => (this.loadProducts()))
         },
         save() {
             axios.post('/artikelhinzufuegen', {

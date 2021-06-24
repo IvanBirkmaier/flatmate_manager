@@ -5,10 +5,7 @@ import htw.berlin.wgverwaltung.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +32,18 @@ public class ArtikelController {
     public void deleteAllProducts(@AuthenticationPrincipal OidcUser user){
         service.deleteAll(user.getEmail());
     }
+
+
+        @DeleteMapping("/artikelloeschen/{id}")
+        public void delete(@PathVariable("id") String id){
+            Long productId = Long.parseLong(id);
+            service.deleteProductById(productId);
+        }
+
+
+
+
+
+
 
 }
