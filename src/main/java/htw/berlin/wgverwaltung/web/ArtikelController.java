@@ -31,4 +31,9 @@ public class ArtikelController {
         return service.saveProdukt(produkt);
     }
 
+    @PostMapping("/alleartikellöschen")
+    public void deleteAllProducts(@AuthenticationPrincipal OidcUser user){
+        service.deleteAll(user.getEmail());
+    }
+
 }

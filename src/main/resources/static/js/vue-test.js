@@ -28,6 +28,9 @@ app.component('input-einkaufsliste', {
 </tr>
 </tbody>
 </table>
+</div>
+<div>
+<button type="button" @click="deleteProducts()">Einkaufsliste leeren</button>
 </div>`,
 
     data() {
@@ -41,6 +44,9 @@ app.component('input-einkaufsliste', {
     methods: {
         loadProducts() {
             axios.get('/findartikel').then(response => (this.item = response.data))
+        },
+        deleteProducts(){
+          axios.post('/alleartikellöschen').then(response => (this.loadProducts()))
         },
         save() {
             axios.post('/artikelhinzufuegen', {
