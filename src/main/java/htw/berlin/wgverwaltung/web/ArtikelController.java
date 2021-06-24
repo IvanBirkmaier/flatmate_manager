@@ -35,7 +35,7 @@ public class ArtikelController {
 
 
         @DeleteMapping("/artikelloeschen/{id}")
-        public void delete(@PathVariable("id") String id){
+        public void delete(@PathVariable String id){
             Long productId = Long.parseLong(id);
             service.deleteProductById(productId);
         }
