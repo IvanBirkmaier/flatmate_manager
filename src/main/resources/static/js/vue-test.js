@@ -21,7 +21,7 @@ app.component('input-einkaufsliste', {
 <td colspan="2">Keine Artikel</td>
 </tr>
 <tr  v-for="ProduktEntity in item">
-<td ><button type="button" @click="deleteOneProduct('65')">Entfernen</button>{{ProduktEntity.productname}}</td>
+<td ><button type="button"  @click="deleteOneProduct(String(ProduktEntity.productId))">Entfernen</button>{{ProduktEntity.productname}}<input type="checkbox"></td>
 </tr>
 <tr>
 <td>{{nameField}}</td>
