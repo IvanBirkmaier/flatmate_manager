@@ -17,6 +17,15 @@ public class Service {
     @Autowired
     private ProduktRepository produktRepository;
 
+    public List<ProduktEntity> findAll(String userEmail) {
+        System.out.println("1");
+        var iterator = produktRepository.findAll();
+        var products = new ArrayList<ProduktEntity>();
+        for (ProduktEntity p : iterator) {
+            if(p.getOwner()!=null && p.getOwner().equals(userEmail)){ products.add(p);}
+        }
+        return products;
+    }
 
 //Produkt Funktionen
     public List<ProduktEntity> findeAlleProdukte(){
@@ -66,7 +75,9 @@ public class Service {
         putzplanRepository.save(putzplanEntity);
     }
 
-    public void saveProdukt(ProduktEntity produktEntity){produktRepository.save(produktEntity);}
+    public ProduktEntity saveProdukt(ProduktEntity produktEntity){
+        return produktRepository.save(produktEntity);
+    }
 
 
 }
