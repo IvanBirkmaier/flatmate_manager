@@ -18,7 +18,6 @@ public class Service {
     private ProduktRepository produktRepository;
 
     public List<ProduktEntity> findAll(String userEmail) {
-        System.out.println("1");
         var iterator = produktRepository.findAll();
         var products = new ArrayList<ProduktEntity>();
         for (ProduktEntity p : iterator) {
@@ -26,6 +25,25 @@ public class Service {
         }
         return products;
     }
+
+
+    public void deleteAll(String userEmail){
+        var iterator = produktRepository.findAll();
+        for (ProduktEntity p : iterator) {
+            if(p.getOwner()!=null && p.getOwner().equals(userEmail)){ produktRepository.delete(p);}
+        }
+    }
+
+    public void deleteProductById(Long productId){
+        produktRepository.deleteById(productId);
+    }
+
+
+
+
+
+
+
 
 //Produkt Funktionen
     public List<ProduktEntity> findeAlleProdukte(){
@@ -47,9 +65,7 @@ public class Service {
         return produkte;
     }
 
-    public void deleteProductById(Long productId){
-        produktRepository.deleteById(productId);
-    }
+
     public void deleteProduct(ProduktEntity p){
         produktRepository.delete(p);
     }
