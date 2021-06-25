@@ -6,8 +6,9 @@ import htw.berlin.wgverwaltung.persistence.PutzplanEntity;
 import htw.berlin.wgverwaltung.persistence.PutzplanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+
 @org.springframework.stereotype.Service
 public class Service {
 
@@ -20,9 +21,18 @@ public class Service {
     public List<ProduktEntity> findAll(String userEmail) {
         var iterator = produktRepository.findAll();
         var products = new ArrayList<ProduktEntity>();
+        var completed = new ArrayList<ProduktEntity>();
+        var uncompleted = new ArrayList<ProduktEntity>();
         for (ProduktEntity p : iterator) {
-            if(p.getOwner()!=null && p.getOwner().equals(userEmail)){ products.add(p);}
+            if(p.getOwner()!=null && p.getOwner().equals(userEmail)){
+                if(p.getCompleted() == false){
+                        products.add(0,p);
+                }else if(p.getCompleted() == true){
+                  products.add(p);
+                }
+            }
         }
+        Collections.reverse(products);
         return products;
     }
 
@@ -38,6 +48,9 @@ public class Service {
         produktRepository.deleteById(productId);
     }
 
+    public void completed(Long productId){
+      produktRepository.findById(productId).get().setCompleted(true);
+    }
 
 
 
