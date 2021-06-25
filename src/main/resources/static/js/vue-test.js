@@ -8,8 +8,22 @@ app.component('input-einkaufsliste', {
  <input v-model="nameField" placeholder="Artikel" ref="nameInput">
  <button type="button" @click="save()">Hinzufügen</button>
 </div> 
+
 <div>
 <h2>Einkaufsliste</h2>
+<div>
+<ul class="Einkaufsliste">
+<li class="Artikel" v-for="ProduktEntity in item" :class="removed">
+<div class="Checkbox">
+<input class="form-check" type="checkbox" value="">
+<label class="form-check-label" for="defaultCheck1">
+{{ProduktEntity.productname}}
+</label>
+</div></li>
+</ul>
+</div>
+
+<div>
 <table>
 <thead>
 <tr>
@@ -29,6 +43,7 @@ app.component('input-einkaufsliste', {
 </tbody>
 </table>
 </div>
+</div>
 <div>
 <button type="button" @click="deleteProducts()">Einkaufsliste leeren</button>
 </div>`,
@@ -36,7 +51,8 @@ app.component('input-einkaufsliste', {
     data() {
         return {
             nameField: '',
-            item: [],
+            item: []
+
         };
     },
 
@@ -50,7 +66,7 @@ app.component('input-einkaufsliste', {
         },
 
         deleteOneProduct(id){
-            axios.delete('/artikelloeschen/{id}').then(response => (this.loadProducts()))
+            axios.delete('/artikelloeschen/'+id).then(response => (this.loadProducts()))
         },
         save() {
             axios.post('/artikelhinzufuegen', {
