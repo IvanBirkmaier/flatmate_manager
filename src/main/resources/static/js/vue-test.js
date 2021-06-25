@@ -11,17 +11,6 @@ app.component('input-einkaufsliste', {
 
 <div>
 <h2>Einkaufsliste</h2>
-<div>
-<ul class="Einkaufsliste">
-<li class="Artikel" v-for="ProduktEntity in item" :class="removed">
-<div class="Checkbox">
-<input class="form-check" type="checkbox" value="">
-<label class="form-check-label" for="defaultCheck1">
-{{ProduktEntity.productname}}
-</label>
-</div></li>
-</ul>
-</div>
 
 <div>
 <table>
@@ -35,7 +24,7 @@ app.component('input-einkaufsliste', {
 <td colspan="2">Keine Artikel</td>
 </tr>
 <tr  v-for="ProduktEntity in item">
-<td ><button type="button"  @click="deleteOneProduct(String(ProduktEntity.productId))">Entfernen</button>{{ProduktEntity.productname}}<input type="checkbox"></td>
+<td >{{ProduktEntity.productname}}<button class="clear" type="button"  @click="deleteOneProduct(String(ProduktEntity.productId))">x</button></td>
 </tr>
 <tr>
 <td>{{nameField}}</td>
