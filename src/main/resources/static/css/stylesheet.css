@@ -15,15 +15,40 @@
     font-size: 25px;
     margin-right: 10px;
 }
+.home{
+    float: left;
+}
 
+.login{
+    float: right;
+}
 /* Navbar links on mouse-over */
-.navbar a:hover {
+.login:hover {
     background-color: #ac5858;
 }
+
 
 /* Current/active navbar link */
 .active {
     background-color: #b43c03;
 }
+.clear{
+    border-radius: 50%;
+    border: none;
+    background-color: #b43c03;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.clear:hover{
+    background-color: white;
+    color: #b43c03;
+    border: solid #b43c03 1px;
+}
+
+
+
+
 
 

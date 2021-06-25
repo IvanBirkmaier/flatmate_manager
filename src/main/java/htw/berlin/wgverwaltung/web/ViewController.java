@@ -17,7 +17,7 @@ public class ViewController {
 
 
 
-    @GetMapping("/startseite")
+    @GetMapping("/")
     public String startseite(@AuthenticationPrincipal OidcUser user, Model model) {
         String email = user.getEmail();
         model.addAttribute("email", email);

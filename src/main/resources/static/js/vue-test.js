@@ -11,6 +11,7 @@ app.component('input-einkaufsliste', {
 
 <div>
 <h2>Einkaufsliste</h2>
+
 </div>
 <div>
 <table>
@@ -24,11 +25,12 @@ app.component('input-einkaufsliste', {
              <td colspan="2">Keine Artikel</td>
         </tr>
         <tr v-for="ProduktEntity in item">
-              <button type="button"  @click="deleteOneProduct(String(ProduktEntity.productId))">Entfernen</button>
+              <button type="button" class="clear" @click="deleteOneProduct(String(ProduktEntity.productId))">Entfernen</button>
               {{ProduktEntity.productname}}
            <button type="button" @click="changeColor(String(ProduktEntity.productId))">Gekauft</button>
          </tr>
     </tbody>
+
 </table>
 </div>
 <div>
