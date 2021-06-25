@@ -12,26 +12,26 @@ app.component('input-einkaufsliste', {
 <div>
 <h2>Einkaufsliste</h2>
 
+</div>
 <div>
 <table>
-<thead>
-<tr>
-<th>Artikel</th>
-</tr>
-</thead>
-<tbody>
-<tr v-if="item.lengh === 0">
-<td colspan="2">Keine Artikel</td>
-</tr>
-<tr  v-for="ProduktEntity in item">
-<td >{{ProduktEntity.productname}}<button class="clear" type="button"  @click="deleteOneProduct(String(ProduktEntity.productId))">x</button></td>
-</tr>
-<tr>
-<td>{{nameField}}</td>
-</tr>
-</tbody>
+    <thead>
+        <tr>
+            <th>Artikel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-if="item.lengh === 0">
+             <td colspan="2">Keine Artikel</td>
+        </tr>
+        <tr v-for="ProduktEntity in item">
+              <button type="button" class="clear" @click="deleteOneProduct(String(ProduktEntity.productId))">Entfernen</button>
+              {{ProduktEntity.productname}}
+           <button type="button" @click="changeColor(String(ProduktEntity.productId))">Gekauft</button>
+         </tr>
+    </tbody>
+
 </table>
-</div>
 </div>
 <div>
 <button type="button" @click="deleteProducts()">Einkaufsliste leeren</button>
@@ -40,8 +40,7 @@ app.component('input-einkaufsliste', {
     data() {
         return {
             nameField: '',
-            item: []
-
+            item: [],
         };
     },
 
@@ -57,6 +56,10 @@ app.component('input-einkaufsliste', {
         deleteOneProduct(id){
             axios.delete('/artikelloeschen/'+id).then(response => (this.loadProducts()))
         },
+
+        changeColor(id){
+          axios.post('/artikelgrau/'+id).then(response => (this.loadProducts()))
+        },
         save() {
             axios.post('/artikelhinzufuegen', {
                 productname: this.nameField
@@ -68,7 +71,6 @@ app.component('input-einkaufsliste', {
                 console.log('nicht gerspeichert');
             });
         },
-
     },
     mounted: function () {
         this.loadProducts();
