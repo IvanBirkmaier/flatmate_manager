@@ -15,15 +15,23 @@
     font-size: 25px;
     margin-right: 10px;
 }
+.home{
+    float: left;
+}
 
+.login{
+    float: right;
+}
 /* Navbar links on mouse-over */
-.navbar a:hover {
+.login:hover {
     background-color: #ac5858;
 }
+
 
 /* Current/active navbar link */
 .active {
     background-color: #b43c03;
 }
+
 
 

@@ -15,11 +15,16 @@
 <div class="wrapper">
 
     <div class="navbar">
-        <a class="active" href="#"><i class="fa fa-home"></i></a>
-        <a href="/createProdukt"><i class="fa fa-shopping-cart"></i> Einkaufsliste</a>
-        <a href="#"><i class="fa fa-tasks"> Putzplan</i></a>
+        <div class="home">
+        <a class="active"><i class="fa fa-home"></i></a>
+        </div>
+        <div class="page">
+        <a>WG-Verwaltung</a>
+        </div>
+        <div class="login">
         <a href="#"><i class="fa fa-user-circle"></i>   Login</a>
-        <p th:if="${firstName} + ${lastName}" th:text="'User: ' + ${firstName} +' '+ ${lastName}"></p>
+        </div>
+
     </div>
     <br/>
     <br/>
