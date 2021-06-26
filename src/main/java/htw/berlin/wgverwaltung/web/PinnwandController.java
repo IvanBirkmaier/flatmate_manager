@@ -1,6 +1,6 @@
 package htw.berlin.wgverwaltung.web;
 
-import htw.berlin.wgverwaltung.persistence.PinWandEntity;
+import htw.berlin.wgverwaltung.persistence.PinnwandEntity;
 
 import htw.berlin.wgverwaltung.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class PinWallController {
+public class PinnwandController {
     @Autowired
     private Service service;
 
     @GetMapping("/findposts")
-    public List<PinWandEntity> allePosts(@AuthenticationPrincipal OidcUser user) {
+    public List<PinnwandEntity> allePosts(@AuthenticationPrincipal OidcUser user) {
         return service.findAllpinWall(user.getEmail());
     }
 
     @PostMapping("/posthinzufuegen")
-    public PinWandEntity createPost(@AuthenticationPrincipal OidcUser user, @RequestBody PinWandEntity post) {
+    public PinnwandEntity createPost(@AuthenticationPrincipal OidcUser user, @RequestBody PinnwandEntity post) {
         post.setOwner(user.getEmail());
         return service.savePinWall(post);
     }
