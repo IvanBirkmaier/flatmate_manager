@@ -21,7 +21,13 @@ public class Service {
 
 
 
+
     //Produkt
+
+    @Autowired
+    private FinanzRepository finanzRepository;
+
+
     public List<ProduktEntity> findAll(String userEmail) {
         var iterator = produktRepository.findAll();
         var products = new ArrayList<ProduktEntity>();
@@ -79,5 +85,14 @@ public List<PinWandEntity> findAllpinWall(String userEmail) {
         return pinWandRepository.save(pinWandEntity);
     }
 
+    //Finanzfunktionen
+    public List<FinanzEntity>findeAlleFinanzen(){
+        var iterator = finanzRepository.findAll();
+        var finanzen = new ArrayList<FinanzEntity>();
+        iterator.forEach(finanzen::add);
+        return finanzen;
+    }
+
+    public void deleteFinance(FinanzEntity f){finanzRepository.delete(f);}
 
 }

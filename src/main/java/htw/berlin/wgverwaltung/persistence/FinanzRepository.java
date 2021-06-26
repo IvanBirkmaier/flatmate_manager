@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProduktRepository extends CrudRepository<ProduktEntity, Long> {
+public interface FinanzRepository extends CrudRepository<FinanzEntity, Long> {
 }
