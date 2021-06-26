@@ -38,7 +38,6 @@ public class Service {
         return products;
     }
 
-
     public void deleteAll(String userEmail){
         var iterator = produktRepository.findAll();
         for (ProduktEntity p : iterator) {
@@ -50,11 +49,14 @@ public class Service {
         produktRepository.deleteById(productId);
     }
 
-
     public void completed(Long productId){
     var p = produktRepository.findById(productId).get();
     p.setCompleted(true);
     produktRepository.save(p);
+    }
+
+    public ProduktEntity saveProdukt(ProduktEntity produktEntity) {
+        return produktRepository.save(produktEntity);
     }
 
 //PinWall
@@ -69,8 +71,13 @@ public List<PinWandEntity> findAllpinWall(String userEmail) {
     return pinwall;
 }
 
+    public void deletePinWallById(Long pinWallId){
+        pinWandRepository.deleteById(pinWallId);
+    }
 
-
+    public PinWandEntity savePinWall(PinWandEntity pinWandEntity) {
+        return pinWandRepository.save(pinWandEntity);
+    }
 
 
 }
