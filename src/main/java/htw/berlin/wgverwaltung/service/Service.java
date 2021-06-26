@@ -1,9 +1,6 @@
 package htw.berlin.wgverwaltung.service;
 
-import htw.berlin.wgverwaltung.persistence.ProduktEntity;
-import htw.berlin.wgverwaltung.persistence.ProduktRepository;
-import htw.berlin.wgverwaltung.persistence.PutzplanEntity;
-import htw.berlin.wgverwaltung.persistence.PutzplanRepository;
+import htw.berlin.wgverwaltung.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -16,6 +13,9 @@ public class Service {
 
     @Autowired
     private ProduktRepository produktRepository;
+
+    @Autowired
+    private FinanzRepository finanzRepository;
 
     public List<ProduktEntity> findAll(String userEmail) {
         var iterator = produktRepository.findAll();
@@ -95,5 +95,14 @@ public class Service {
         return produktRepository.save(produktEntity);
     }
 
+    //Finanzfunktionen
+    public List<FinanzEntity>findeAlleFinanzen(){
+        var iterator = finanzRepository.findAll();
+        var finanzen = new ArrayList<FinanzEntity>();
+        iterator.forEach(finanzen::add);
+        return finanzen;
+    }
+
+    public void deleteFinance(FinanzEntity f){finanzRepository.delete(f);}
 
 }

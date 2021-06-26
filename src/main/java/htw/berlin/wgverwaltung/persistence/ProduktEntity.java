@@ -17,7 +17,7 @@ public class ProduktEntity {
     private String productname;
     @Column(name="completed", nullable = false)
     private Boolean completed = false;
-
+    @Column(name="owner", nullable = false)
     private String owner;
 
 
