@@ -9,23 +9,20 @@ import java.util.*;
 @org.springframework.stereotype.Service
 public class Service {
 
-    @Autowired
-    private PutzplanRepository putzplanRepository;
-
 
     @Autowired
-    private PinWandRepository pinWandRepository;
+    private PinnwandRepository pinnwandRepository;
 
     @Autowired
     private ProduktRepository produktRepository;
 
-
+    @Autowired
+    private FinanzRepository finanzRepository;
 
 
     //Produkt
 
-    @Autowired
-    private FinanzRepository finanzRepository;
+
 
 
     public List<ProduktEntity> findAll(String userEmail) {
@@ -66,10 +63,10 @@ public class Service {
     }
 
 //PinWall
-public List<PinWandEntity> findAllpinWall(String userEmail) {
-    var iterator = pinWandRepository.findAll();
-    var pinwall = new ArrayList<PinWandEntity>();
-    for (PinWandEntity p : iterator) {
+public List<PinnwandEntity> findAllpinWall(String userEmail) {
+    var iterator = pinnwandRepository.findAll();
+    var pinwall = new ArrayList<PinnwandEntity>();
+    for (PinnwandEntity p : iterator) {
         if (p.getOwner() != null && p.getOwner().equals(userEmail)) {
             pinwall.add(p);
         }
@@ -78,11 +75,11 @@ public List<PinWandEntity> findAllpinWall(String userEmail) {
 }
 
     public void deletePinWallById(Long pinWallId){
-        pinWandRepository.deleteById(pinWallId);
+        pinnwandRepository.deleteById(pinWallId);
     }
 
-    public PinWandEntity savePinWall(PinWandEntity pinWandEntity) {
-        return pinWandRepository.save(pinWandEntity);
+    public PinnwandEntity savePinWall(PinnwandEntity pinnwandEntity) {
+        return pinnwandRepository.save(pinnwandEntity);
     }
 
     //Finanzfunktionen

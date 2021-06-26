@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="pinwall")
-public class PinWandEntity {
+public class PinnwandEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class PinWandEntity {
     private String post;
     private String owner;
 
-    public PinWandEntity() {}
+    public PinnwandEntity() {}
 
     public Long getPinwallId() {
         return pinwallId;
