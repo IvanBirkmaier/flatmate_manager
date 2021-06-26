@@ -1,9 +1,6 @@
 package htw.berlin.wgverwaltung.service;
 
-import htw.berlin.wgverwaltung.persistence.ProduktEntity;
-import htw.berlin.wgverwaltung.persistence.ProduktRepository;
-import htw.berlin.wgverwaltung.persistence.PutzplanEntity;
-import htw.berlin.wgverwaltung.persistence.PutzplanRepository;
+import htw.berlin.wgverwaltung.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
@@ -15,20 +12,25 @@ public class Service {
     @Autowired
     private PutzplanRepository putzplanRepository;
 
+
+    @Autowired
+    private PinWandRepository pinWandRepository;
+
     @Autowired
     private ProduktRepository produktRepository;
 
+
+
+    //Produkt
     public List<ProduktEntity> findAll(String userEmail) {
         var iterator = produktRepository.findAll();
         var products = new ArrayList<ProduktEntity>();
-        var completed = new ArrayList<ProduktEntity>();
-        var uncompleted = new ArrayList<ProduktEntity>();
         for (ProduktEntity p : iterator) {
             if(p.getOwner()!=null && p.getOwner().equals(userEmail)){
                 if(p.getCompleted() == false){
-                        products.add(0,p);
+                        products.add(p);
                 }else if(p.getCompleted() == true){
-                  products.add(p);
+                  products.add(0,p);
                 }
             }
         }
@@ -48,65 +50,27 @@ public class Service {
         produktRepository.deleteById(productId);
     }
 
+
     public void completed(Long productId){
-      produktRepository.findById(productId).get().setCompleted(true);
+    var p = produktRepository.findById(productId).get();
+    p.setCompleted(true);
+    produktRepository.save(p);
     }
 
-
-
-
-
-
-
-//Produkt Funktionen
-    public List<ProduktEntity> findeAlleProdukte(){
-        var iterator = produktRepository.findAll();
-        var produkte = new ArrayList<ProduktEntity>();
-        iterator.forEach(produkte::add);
-        return produkte;
-    }
-    public List<ProduktEntity> findeAlleOffenenProdukte(){
-        var iterator = produktRepository.findAll();
-        var produkte = new ArrayList<ProduktEntity>();
-        iterator.forEach(produkte::add);
-
-        for(ProduktEntity p : produkte){
-            if(p.getCompleted()){
-                produkte.remove(p);
-            }
+//PinWall
+public List<PinWandEntity> findAllpinWall(String userEmail) {
+    var iterator = pinWandRepository.findAll();
+    var pinwall = new ArrayList<PinWandEntity>();
+    for (PinWandEntity p : iterator) {
+        if (p.getOwner() != null && p.getOwner().equals(userEmail)) {
+            pinwall.add(p);
         }
-        return produkte;
     }
+    return pinwall;
+}
 
 
-    public void deleteProduct(ProduktEntity p){
-        produktRepository.delete(p);
-    }
 
-//Putzplan Funktionen
-    public List<PutzplanEntity> findeAllePutzplaene(){
-        var iterator = putzplanRepository.findAll();
-        var putzplaene = new ArrayList<PutzplanEntity>();
-        iterator.forEach(putzplaene::add);
-        return putzplaene;
-    }
-
-    public Long countAllPutzplaene(){
-        return putzplanRepository.count();
-    }
-
-    public void deleteByIdPutzplane(Long putzplanId){
-        putzplanRepository.deleteById(putzplanId);
-    }
-
-
-    public void savePutzplan(PutzplanEntity putzplanEntity){
-        putzplanRepository.save(putzplanEntity);
-    }
-
-    public ProduktEntity saveProdukt(ProduktEntity produktEntity){
-        return produktRepository.save(produktEntity);
-    }
 
 
 }
