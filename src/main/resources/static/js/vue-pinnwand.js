@@ -18,7 +18,7 @@ export default {
         <thead>
        </thead>
         <tbody>
-            <tr v-if="item.lengh === 0">
+            <tr v-if="item.length === 0">
                 <td colspan="2">Pinnwand</td>
             </tr>      
             <tr v-for="PinnwandEntity in item">

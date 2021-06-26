@@ -1,6 +1,6 @@
 
-import VueTest from './vue-einkaufsliste.js';
-import VuePinWall from './vue-pinnwand.js';
+import VueEinkaufsliste from './vue-einkaufsliste.js';
+import VuePinnwand from './vue-pinnwand.js';
 
 
 const app = Vue.createApp({});
