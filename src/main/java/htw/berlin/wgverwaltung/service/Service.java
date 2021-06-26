@@ -12,30 +12,37 @@ public class Service {
     @Autowired
     private PutzplanRepository putzplanRepository;
 
+
+    @Autowired
+    private PinWandRepository pinWandRepository;
+
     @Autowired
     private ProduktRepository produktRepository;
+
+
+
+
+    //Produkt
 
     @Autowired
     private FinanzRepository finanzRepository;
 
+
     public List<ProduktEntity> findAll(String userEmail) {
         var iterator = produktRepository.findAll();
         var products = new ArrayList<ProduktEntity>();
-        var completed = new ArrayList<ProduktEntity>();
-        var uncompleted = new ArrayList<ProduktEntity>();
         for (ProduktEntity p : iterator) {
             if(p.getOwner()!=null && p.getOwner().equals(userEmail)){
                 if(p.getCompleted() == false){
-                        products.add(0,p);
+                        products.add(p);
                 }else if(p.getCompleted() == true){
-                  products.add(p);
+                  products.add(0,p);
                 }
             }
         }
         Collections.reverse(products);
         return products;
     }
-
 
     public void deleteAll(String userEmail){
         var iterator = produktRepository.findAll();
@@ -49,63 +56,33 @@ public class Service {
     }
 
     public void completed(Long productId){
-      produktRepository.findById(productId).get().setCompleted(true);
+    var p = produktRepository.findById(productId).get();
+    p.setCompleted(true);
+    produktRepository.save(p);
     }
 
-
-
-
-
-
-
-//Produkt Funktionen
-    public List<ProduktEntity> findeAlleProdukte(){
-        var iterator = produktRepository.findAll();
-        var produkte = new ArrayList<ProduktEntity>();
-        iterator.forEach(produkte::add);
-        return produkte;
-    }
-    public List<ProduktEntity> findeAlleOffenenProdukte(){
-        var iterator = produktRepository.findAll();
-        var produkte = new ArrayList<ProduktEntity>();
-        iterator.forEach(produkte::add);
-
-        for(ProduktEntity p : produkte){
-            if(p.getCompleted()){
-                produkte.remove(p);
-            }
-        }
-        return produkte;
-    }
-
-
-    public void deleteProduct(ProduktEntity p){
-        produktRepository.delete(p);
-    }
-
-//Putzplan Funktionen
-    public List<PutzplanEntity> findeAllePutzplaene(){
-        var iterator = putzplanRepository.findAll();
-        var putzplaene = new ArrayList<PutzplanEntity>();
-        iterator.forEach(putzplaene::add);
-        return putzplaene;
-    }
-
-    public Long countAllPutzplaene(){
-        return putzplanRepository.count();
-    }
-
-    public void deleteByIdPutzplane(Long putzplanId){
-        putzplanRepository.deleteById(putzplanId);
-    }
-
-
-    public void savePutzplan(PutzplanEntity putzplanEntity){
-        putzplanRepository.save(putzplanEntity);
-    }
-
-    public ProduktEntity saveProdukt(ProduktEntity produktEntity){
+    public ProduktEntity saveProdukt(ProduktEntity produktEntity) {
         return produktRepository.save(produktEntity);
+    }
+
+//PinWall
+public List<PinWandEntity> findAllpinWall(String userEmail) {
+    var iterator = pinWandRepository.findAll();
+    var pinwall = new ArrayList<PinWandEntity>();
+    for (PinWandEntity p : iterator) {
+        if (p.getOwner() != null && p.getOwner().equals(userEmail)) {
+            pinwall.add(p);
+        }
+    }
+    return pinwall;
+}
+
+    public void deletePinWallById(Long pinWallId){
+        pinWandRepository.deleteById(pinWallId);
+    }
+
+    public PinWandEntity savePinWall(PinWandEntity pinWandEntity) {
+        return pinWandRepository.save(pinWandEntity);
     }
 
     //Finanzfunktionen

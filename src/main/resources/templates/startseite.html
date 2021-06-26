@@ -7,8 +7,7 @@
     <script src="http://unpkg.com/vue@next" defer></script>
     <script src="http://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://unpk.com/@babel/standalone/babel.min.js"></script>
-    <script src="#" th:src="@{/js/vue-test.js}" defer></script>
-    <script type="text/javascript" th:src="@{js/test.js}" defer></script>
+    <script type="module" src="#" th:src="@{/js/vue-main.js}" defer></script>
   <title>Startseite</title>
 </head>
 <body>
@@ -28,9 +27,14 @@
     </div>
     <br/>
     <br/>
-    <div id="input-einkaufsliste">
-     <input-einkaufsliste></input-einkaufsliste>
+    <div id="app">
+        <vue-test></vue-test>
+        <vue-pinwall></vue-pinwall>
     </div>
+
+
+
+
 </div>
 </body>
 </html>

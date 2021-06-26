@@ -1,17 +1,12 @@
-// Create a Vue application
-const app = Vue.createApp({})
-
-// Define a new global component called button-counter
-app.component('input-einkaufsliste', {
+export default {
+    props: ['title'],
     template: `
  <div>
  <input v-model="nameField" placeholder="Artikel" ref="nameInput">
  <button type="button" @click="save()">Hinzufügen</button>
 </div> 
-
 <div>
 <h2>Einkaufsliste</h2>
-
 </div>
 <div>
 <table>
@@ -25,12 +20,18 @@ app.component('input-einkaufsliste', {
              <td colspan="2">Keine Artikel</td>
         </tr>
         <tr v-for="ProduktEntity in item">
-              <button type="button" class="clear" @click="deleteOneProduct(String(ProduktEntity.productId))">Entfernen</button>
-              {{ProduktEntity.productname}}
-           <button type="button" @click="changeColor(String(ProduktEntity.productId))">Gekauft</button>
+            <div v-else="ProduktEntity.completed === 0">
+            <button type="button" class="clear" @click="deleteOneProduct(String(ProduktEntity.productId))">X</button>
+                {{ProduktEntity.productname}}
+                <button type="button" @click="changeColor(String(ProduktEntity.productId))">Gekauft</button>
+            </div>
+             <div  v-if="ProduktEntity.completed === 1">
+                <button type="button" class="clear" @click="deleteOneProduct(String(ProduktEntity.productId))">X</button>
+             {{ProduktEntity.productname}} 
+                <button type="button" class="clear" @click="changeColor(String(ProduktEntity.productId))">Gekauft</button>
+            </div>
          </tr>
-    </tbody>
-
+    </tbody>         
 </table>
 </div>
 <div>
@@ -75,7 +76,4 @@ app.component('input-einkaufsliste', {
     mounted: function () {
         this.loadProducts();
     }
-});
-
-
-app.mount('#input-einkaufsliste');
+}
