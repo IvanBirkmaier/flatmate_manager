@@ -51,6 +51,21 @@
     color: #b43c03;
 }
 
+/* VUE MAIN APP WRAPPER-KLASSEN*/
+.app-wrapper{
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+}
+.wrapper-einkaufsliste{
+width: 50%;
+    border: 1px solid black;
+}
+.wrapper-pinnwand{
+width: 50%;
+    border: 1px solid black;
+}
+
 
 
 

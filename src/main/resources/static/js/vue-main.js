@@ -1,10 +1,10 @@
 
-import VueTest from './vue-test.js';
-import VuePinWall from './vue-pinwall.js';
+import VueEinkaufsliste from './vue-einkaufsliste.js';
+import VuePinnwand from './vue-pinnwand.js';
 
 
 const app = Vue.createApp({});
-app.component('vue-test', VueTest);
-app.component('vue-pinwall', VuePinWall);
+app.component('vue-einkaufsliste', VueEinkaufsliste);
+app.component('vue-pinnwand', VuePinnwand);
 
 app.mount('#app');

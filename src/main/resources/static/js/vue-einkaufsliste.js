@@ -69,7 +69,7 @@ export default {
                 this.$refs.nameInput.focus();
                 this.loadProducts();
             }, (error) => {
-                console.log('nicht gerspeichert');
+                console.log('nicht gespeichert');
             });
         },
     },

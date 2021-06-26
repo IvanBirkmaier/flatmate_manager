@@ -18,12 +18,12 @@ export default {
         <thead>
        </thead>
         <tbody>
-            <tr v-if="item.lengh === 0">
+            <tr v-if="item.length === 0">
                 <td colspan="2">Pinnwand</td>
             </tr>      
             <tr v-for="PinnwandEntity in item">
                     <button type="button" class="clear" @click="deleteOnePost(String(PinnwandEntity.productId))">X</button>
-                {{PinWandEntity.post}}
+                {{PinnwandEntity.post}}
          </tr>
         </tbody> 
     </table>
