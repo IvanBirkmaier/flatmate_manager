@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class PinWallController {
+public class PinnwandController {
     @Autowired
     private Service service;
 
