@@ -10,7 +10,8 @@ export default {
     <button type="button" @click="save()">Posten</button>
 </div> 
 <div>
-    <h2>Pinwand</h2>
+
+    <h2>Pinnwand</h2>
 </div>
 
 <div>
@@ -18,12 +19,13 @@ export default {
         <thead>
        </thead>
         <tbody>
-            <tr v-if="item.lengh === 0">
-                <td colspan="2">Pinwand</td>
+
+            <tr v-if="item.length === 0">
+                <td colspan="2">Pinnwand</td>
             </tr>      
-            <tr v-for="PinWandEntity in item">
-                    <button type="button" class="clear" @click="deleteOnePost(String(PinWandEntity.productId))">X</button>
-                {{PinWandEntity.post}}
+            <tr v-for="PinnwandEntity in item">
+                    <button type="button" class="clear" @click="deleteOnePost(String(PinnwandEntity.productId))">X</button>
+                {{PinnwandEntity.post}}
          </tr>
         </tbody> 
     </table>
@@ -55,7 +57,8 @@ export default {
                 this.$refs.postInput.focus();
                 this.loadPost();
             }, (error) => {
-                console.log('nicht gerspeichert');
+
+                console.log('nicht gespeichert');
             });
         },
     },

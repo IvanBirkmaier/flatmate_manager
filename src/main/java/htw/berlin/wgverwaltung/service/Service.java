@@ -18,7 +18,9 @@ public class Service {
     private ProduktRepository produktRepository;
 
 
-   // private FinanzRepository finanzRepository;
+    @Autowired
+    private FinanzRepository finanzRepository;
+
 
 
 

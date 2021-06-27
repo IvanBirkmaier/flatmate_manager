@@ -15,7 +15,9 @@ export default {
             <th>Artikel</th>
         </tr>
     </thead>
-    <tbody >
+
+    <tbody>
+
         <tr v-if="item.lengh === 0">
              <td colspan="2">Keine Artikel</td>
         </tr>
@@ -25,7 +27,8 @@ export default {
             {{ProduktEntity.productname}}
                 <button type="button" class="clear" @click="changeColor(String(ProduktEntity.productId))">Gekauft</button>
                 </div>
-            </div>
+
+           
          </tr>
     </tbody>         
 </table>
@@ -66,6 +69,7 @@ export default {
                 this.loadProducts();
             }, (error) => {
                 console.log('nicht gerspeichert');
+
             });
         },
     },
