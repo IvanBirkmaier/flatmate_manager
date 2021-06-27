@@ -1,10 +1,12 @@
 package htw.berlin.wgverwaltung.persistence;
 
-
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import javax.persistence.*;
+import java.awt.*;
+import java.util.ArrayList;
 
 @Entity
-@Table
+@Table(name="invoices")
 public class FinanzEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,14 +14,18 @@ public class FinanzEntity {
     private Long financeId;
     @Column(name = "value", nullable = false)
     private float value;
-    @Column(name = "owner", nullable = false)
-    private String owner;
+    @Column(name = "greator", nullable = false)
+    private String greator;
 
-    protected FinanzEntity(){}
+    //private ArrayList<String> owners = new ArrayList<String>();
 
-    public FinanzEntity(float value, String owner){
-        this.value=value;
-        this.owner=owner;
+    public FinanzEntity() {
+    }
+
+    public FinanzEntity(String greator, float value, ArrayList owners) {
+        this.greator = greator;
+        this.value = value;
+        //this.owners = owners;
     }
 
     public float getValue() {
@@ -30,11 +36,32 @@ public class FinanzEntity {
         this.value = value;
     }
 
-    public String getOwner() {
-        return owner;
+    public String getGreator() {
+        return greator;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setGreator(String owner) {
+        this.greator = owner;
     }
+
+   /**public ArrayList getOwners() {
+        return owners;
+    }
+
+    public void setOwners(ArrayList owners) {
+        this.owners = owners;
+    }
+
+    public float pricePerMemberPerNewInvoice(float value, List owners) {
+        float divide = Float.parseFloat(String.valueOf(owners.getSize()) + 1);
+        float pricePerMember = value / divide;
+        return pricePerMember;
+    }*/
+
+
+
+
+
+
 }
+

@@ -60,6 +60,6 @@ export default {
         },
     },
     mounted: function () {
-        this.loadProducts();
+        this.loadPost();
     }
 }

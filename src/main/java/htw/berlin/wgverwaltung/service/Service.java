@@ -9,8 +9,6 @@ import java.util.*;
 @org.springframework.stereotype.Service
 public class Service {
 
-    @Autowired
-    private PutzplanRepository putzplanRepository;
 
 
     @Autowired
@@ -20,14 +18,11 @@ public class Service {
     private ProduktRepository produktRepository;
 
 
+   // private FinanzRepository finanzRepository;
+
 
 
     //Produkt
-
-    @Autowired
-    private FinanzRepository finanzRepository;
-
-
     public List<ProduktEntity> findAll(String userEmail) {
         var iterator = produktRepository.findAll();
         var products = new ArrayList<ProduktEntity>();
@@ -86,13 +81,33 @@ public List<PinWandEntity> findAllpinWall(String userEmail) {
     }
 
     //Finanzfunktionen
-    public List<FinanzEntity>findeAlleFinanzen(){
-        var iterator = finanzRepository.findAll();
-        var finanzen = new ArrayList<FinanzEntity>();
-        iterator.forEach(finanzen::add);
-        return finanzen;
+
+   /** public void deleteInvoiceById(Long invoceId){
+        finanzRepository.deleteById(invoceId);
     }
 
-    public void deleteFinance(FinanzEntity f){finanzRepository.delete(f);}
+    public FinanzEntity saveInvoice(FinanzEntity finanzEntity){
+        return finanzRepository.save(finanzEntity);
+    }
+
+
+    public void payedBack(String generatorId,String ownerId){
+        var iterator = finanzRepository.findAll();
+        var invoiesOfGenerator = new ArrayList<FinanzEntity>();
+        for (FinanzEntity f : iterator) {
+            if(f.getGreator()!=null && f.getGreator().equals(generatorId)){ invoiesOfGenerator.add(f);}
+        }
+
+    }
+
+    public float pricePerMemberTotal(String member) {
+        for (String owner : this.owners) {
+            if (owner == member){
+
+            }
+        }*/
+
+
+
 
 }

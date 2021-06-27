@@ -15,20 +15,16 @@ export default {
             <th>Artikel</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody >
         <tr v-if="item.lengh === 0">
              <td colspan="2">Keine Artikel</td>
         </tr>
         <tr v-for="ProduktEntity in item">
-            <div v-else="ProduktEntity.completed === 0">
-            <button type="button" class="clear" @click="deleteOneProduct(String(ProduktEntity.productId))">X</button>
-                {{ProduktEntity.productname}}
-                <button type="button" @click="changeColor(String(ProduktEntity.productId))">Gekauft</button>
-            </div>
-             <div  v-if="ProduktEntity.completed === 1">
+         <div class="completed">
                 <button type="button" class="clear" @click="deleteOneProduct(String(ProduktEntity.productId))">X</button>
-             {{ProduktEntity.productname}} 
+            {{ProduktEntity.productname}}
                 <button type="button" class="clear" @click="changeColor(String(ProduktEntity.productId))">Gekauft</button>
+                </div>
             </div>
          </tr>
     </tbody>         
