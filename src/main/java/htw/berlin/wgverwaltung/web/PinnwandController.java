@@ -1,6 +1,8 @@
 package htw.berlin.wgverwaltung.web;
 
+
 import htw.berlin.wgverwaltung.persistence.PinnwandEntity;
+
 
 import htw.berlin.wgverwaltung.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,9 @@ public class PinnwandController {
     private Service service;
 
     @GetMapping("/findposts")
+
     public List<PinnwandEntity> allePosts(@AuthenticationPrincipal OidcUser user) {
+
         return service.findAllpinWall(user.getEmail());
     }
 

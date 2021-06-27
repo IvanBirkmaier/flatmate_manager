@@ -10,6 +10,7 @@ export default {
     <button type="button" @click="save()">Posten</button>
 </div> 
 <div>
+
     <h2>Pinnwand</h2>
 </div>
 
@@ -18,6 +19,7 @@ export default {
         <thead>
        </thead>
         <tbody>
+
             <tr v-if="item.length === 0">
                 <td colspan="2">Pinnwand</td>
             </tr>      
@@ -55,11 +57,12 @@ export default {
                 this.$refs.postInput.focus();
                 this.loadPost();
             }, (error) => {
+
                 console.log('nicht gespeichert');
             });
         },
     },
     mounted: function () {
-        this.loadProducts();
+        this.loadPost();
     }
 }
