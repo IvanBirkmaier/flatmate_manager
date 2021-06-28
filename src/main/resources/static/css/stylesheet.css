@@ -26,11 +26,12 @@ body{
     float: left;
 }
 
-.login{
+#logout{
     float: right;
+
 }
 /* Navbar links on mouse-over */
-.login:hover {
+#logout:hover {
     background-color: #ac5858;
 }
 
