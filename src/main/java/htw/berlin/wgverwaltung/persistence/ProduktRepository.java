@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProduktRepository extends CrudRepository<ProduktEntity, Long> {
-    @Query(value = "SELECT * FROM product WHERE productname = ?1")
-    ProduktEntity findByName (String productname);
 }
