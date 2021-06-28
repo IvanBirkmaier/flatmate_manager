@@ -40,10 +40,14 @@ public class ArtikelController {
             service.deleteProductById(productId);
         }
 
-        @PostMapping("/artikelgrau/{id}")
-         public void completed(@PathVariable String id){
+        @PostMapping("/artikelgrau/{id}/{completed}")
+         public void completed(@PathVariable String id, @PathVariable String completed){
             Long productId = Long.parseLong(id);
-            service.completed(productId);
+            boolean complete = false;
+        if(completed.equals("true")){
+            complete =true;
+        }
+            service.completed(productId, complete);
         }
 
 

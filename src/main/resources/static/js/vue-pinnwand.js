@@ -2,17 +2,15 @@
 export default {
     props: ['title'],
     template: `
-
-
+<div>
+    <h2>To-Do</h2>
+</div>
 
 <div>
-    <input v-model="postField" placeholder="Kommentar" ref="postInput">
-    <button type="button" @click="save()">Posten</button>
+    <input v-model="postField" placeholder="TO-DO" ref="postInput">
+    <button type="button" @click="save()">Hinzufügen</button>
 </div> 
 <div>
-
-    <h2>Pinnwand</h2>
-</div>
 
 <div>
     <table>
@@ -21,10 +19,10 @@ export default {
         <tbody>
 
             <tr v-if="item.length === 0">
-                <td colspan="2">Pinnwand</td>
+                <td colspan="2">Alles erledigt:)</td>
             </tr>      
             <tr v-for="PinnwandEntity in item">
-                    <button type="button" class="clear" @click="deleteOnePost(String(PinnwandEntity.productId))">X</button>
+                    <button type="button" class="clear" @click="deleteOnePost(String(PinnwandEntity.pinwallId))">X</button>
                 {{PinnwandEntity.post}}
          </tr>
         </tbody> 

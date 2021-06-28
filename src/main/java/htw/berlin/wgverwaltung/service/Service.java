@@ -52,9 +52,9 @@ public class Service {
         produktRepository.deleteById(productId);
     }
 
-    public void completed(Long productId){
+    public void completed(Long productId, boolean complete){
     var p = produktRepository.findById(productId).get();
-    p.setCompleted(true);
+    p.setCompleted(complete);
     produktRepository.save(p);
     }
 
