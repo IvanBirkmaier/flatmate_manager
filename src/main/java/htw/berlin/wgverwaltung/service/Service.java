@@ -18,9 +18,6 @@ public class Service {
     private ProduktRepository produktRepository;
 
 
-    @Autowired
-    private FinanzRepository finanzRepository;
-
 
 
 
@@ -85,34 +82,6 @@ public List<PinnwandEntity> findAllpinWall(String userEmail) {
     public PinnwandEntity savePinWall(PinnwandEntity pinnwandEntity) {
         return pinnwandRepository.save(pinnwandEntity);
     }
-
-    //Finanzfunktionen
-
-   /** public void deleteInvoiceById(Long invoceId){
-        finanzRepository.deleteById(invoceId);
-    }
-
-    public FinanzEntity saveInvoice(FinanzEntity finanzEntity){
-        return finanzRepository.save(finanzEntity);
-    }
-
-
-    public void payedBack(String generatorId,String ownerId){
-        var iterator = finanzRepository.findAll();
-        var invoiesOfGenerator = new ArrayList<FinanzEntity>();
-        for (FinanzEntity f : iterator) {
-            if(f.getGreator()!=null && f.getGreator().equals(generatorId)){ invoiesOfGenerator.add(f);}
-        }
-
-    }
-
-    public float pricePerMemberTotal(String member) {
-        for (String owner : this.owners) {
-            if (owner == member){
-
-            }
-        }*/
-
 
 
 
