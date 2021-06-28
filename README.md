@@ -16,6 +16,8 @@
 > 
 > In der rechten, oberen Ecke befindet sich der "Logout"-Button zum Abmelden von der Website.
 
+https://wg-verwaltung.herokuapp.com/
+
 > Pascal Hamar s0573990, Ivan Birkmaier s0574204
 
 
