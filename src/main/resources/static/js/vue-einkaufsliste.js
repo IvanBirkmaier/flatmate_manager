@@ -22,13 +22,13 @@ export default {
         <tr v-for="ProduktEntity in item" v-bind:class="{clear: ProduktEntity.completed}">
          <button type="button" class="clear" @click="deleteOneProduct(String(ProduktEntity.productId))">X</button>
                                     {{ProduktEntity.productname}}
- <input type="checkbox" v-model="checker[String(ProduktEntity.productId)]" v-bind:value="status" @change="changeBoolean(ProduktEntity.productId);changeColor(String(ProduktEntity.productId))"> 
+ <input type="checkbox" v-model="checker[String(ProduktEntity.productId)]"  @change="changeColor(String(ProduktEntity.productId))"> 
          </tr>
     </tbody>         
 </table>
 </div>
 <div>
-<button type="button" @click="deleteProducts()">Einkaufsliste leeren</button>
+<button v-if="item.length !== 0" type="button" @click="deleteProducts()">Einkaufsliste leeren</button>
 </div>
 
 `,
@@ -44,7 +44,6 @@ export default {
             nameField: '',
             item: [],
             checker: [],
-            check: false
         };
     },
 
@@ -61,17 +60,8 @@ export default {
             axios.delete('/artikelloeschen/'+id).then(response => (this.loadProducts()))
         },
 
-        changeBoolean: function (id){
-            if(this.check === true){
-                this.check = false;
-            }else{
-                this.check = true;
-            }
-        },
-
         changeColor: function(id){
-            let checkString = String(this.check)
-          axios.post('/artikelgrau/'+id+'/'+checkString).then((response) => {
+            axios.post('/artikelgrau/'+id).then((response) => {
               this.loadProducts();
           })
         },
