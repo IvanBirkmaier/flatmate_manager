@@ -1,0 +1,22 @@
+{
+  "name": "web_tech_projekt_wgverwaltung",
+  "version": "1.0.0",
+  "description": "Testing enviroment",
+  "main": "index.js",
+  "scripts": {
+    "test": "../../../../../node_modules/.bin/jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanBirkmaier/Web_Tech_Projekt_WGVerwaltung.git"
+  },
+  "author": "Ivan Birkmaier s0574204",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanBirkmaier/Web_Tech_Projekt_WGVerwaltung/issues"
+  },
+  "homepage": "https://github.com/IvanBirkmaier/Web_Tech_Projekt_WGVerwaltung#readme",
+  "devDependencies": {
+    "jest": "^27.0.5"
+  }
+}

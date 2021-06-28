@@ -2,9 +2,11 @@ export default {
     props: ['title'],
     template: `
 
-<div>
+<div class="headline">
 <h2>Einkaufsliste</h2>
 </div>
+
+
 <div>
  <input v-model="nameField" placeholder="Artikel" ref="nameInput">
  <button type="button" @click="save()">Hinzufügen</button>
@@ -19,16 +21,17 @@ export default {
              <td colspan="2">Keine Artikel</td>
     </tr>
         </tr>
-        <tr v-for="ProduktEntity in item" v-bind:class="{clear: ProduktEntity.completed}">
+        <tr v-for="ProduktEntity in item" v-bind:class="{check: ProduktEntity.completed}">
+        
          <button type="button" class="clear" @click="deleteOneProduct(String(ProduktEntity.productId))">X</button>
-                                    {{ProduktEntity.productname}}
+                               {{ProduktEntity.productname}}    
  <input type="checkbox" v-model="checker[String(ProduktEntity.productId)]"  @change="changeColor(String(ProduktEntity.productId))"> 
          </tr>
     </tbody>         
 </table>
 </div>
-<div>
-<button v-if="item.length !== 0" type="button" @click="deleteProducts()">Einkaufsliste leeren</button>
+<div >
+<button type="button" v-if="item.length !== 0" @click="deleteProducts()">Einkaufsliste leeren</button>
 </div>
 
 `,

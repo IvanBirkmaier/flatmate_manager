@@ -2,7 +2,7 @@
 export default {
     props: ['title'],
     template: `
-<div>
+<div class="headline">
     <h2>To-Do</h2>
 </div>
 
@@ -23,7 +23,7 @@ export default {
             </tr>      
             <tr v-for="PinnwandEntity in item">
                     <button type="button" class="clear" @click="deleteOnePost(String(PinnwandEntity.pinwallId))">X</button>
-                {{PinnwandEntity.post}}
+              <p></p> {{PinnwandEntity.post}}
          </tr>
         </tbody> 
     </table>
