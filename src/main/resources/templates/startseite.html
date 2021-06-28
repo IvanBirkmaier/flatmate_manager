@@ -13,6 +13,7 @@
     <title>Startseite</title>
 </head>
 <body>
+
 <div class="wrapper">
 
     <div class="navbar">
@@ -22,10 +23,11 @@
         <div class="page">
         <a>WG-Verwaltung</a>
         </div>
-        <div class="login">
-        <a href="#"><i class="fa fa-user-circle"></i>   Login</a>
+        <div>
+            <form id="logout" method="POST"  th:action="@{/logout}">
+                <button type="submit" class="fa fa-sign-out"></button>
+            </form>
         </div>
-
     </div>
     <br/>
     <br/>

@@ -17,13 +17,6 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-# Dependency directories
-node_modules/
-jspm_packages/
-
-
-
-
 
 ### IntelliJ IDEA ###
 .idea
