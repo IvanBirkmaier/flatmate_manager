@@ -1,6 +1,6 @@
 # WG-Verwaltungs-App
 
-### **Technologie-Stack:**
+## **Technologie-Stack:**
 - **Java Version:** 16
 - **Frameworks und Bibliotheken:**
   - Spring Boot 2.4.5
