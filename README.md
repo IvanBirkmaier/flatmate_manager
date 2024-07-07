@@ -14,6 +14,10 @@
   - Spring Boot DevTools
   - Oracle JDBC (ojdbc8)
   - Spring Boot Starter Test (JUnit Platform)
+- **Frontend Technologies**:
+  - JavaScript
+  - CSS
+  - HTML
 
 ## **Beschreibung:**
 Die WG-Verwaltungs-App ist ein Unterstützungstool für Wohnungsgemeinschaften, das die Organisation von Einkäufen und generellen Aufgaben erleichtert.
